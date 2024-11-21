@@ -28,7 +28,15 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
+  let fullName =
+    variables.name === null || variables.lastname === null
+      ? "Full-name"
+      : variables.name + " " + variables.lastname;
 
+  let location =
+    variables.city === null || variables.country === null
+      ? "Location"
+      : variables.city + ", " + variables.country;
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
